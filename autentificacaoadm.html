@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="autenticacaof.css">
+</head>
+<body>
+    <div class="geral">
+       
+        <img src="logo.jpeg" class="logotipo">
+        <h2>Acesso de Administrador</h2>
+
+        <div class="login">
+        <label for="cpf">CPF</label>
+        <input type="text" id="txtcpf" placeholder="000.000.000-00" name="cpf"><br><br>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="txtsenha" placeholder="Digite sua senha" name="senha">
+        </div>
+        <button type="button" onclick="Entrar()">Entrar</button>
+
+
+    </div>
+    <script>
+        function Entrar(){
+            const cpf = document.getElementById('txtcpf').value.trim();
+            const senha = document.getElementById('txtsenha').value.trim();
+            if(!cpf || !senha){
+                alert('Por favor, preencha CPF e senha.');
+                return;
+            }
+            // Redireciona para a área de administrador (ajuste conforme necessário)
+            window.location.href = 'funcionario.html';
+        }
+    </script>
+</body>
+</html>
