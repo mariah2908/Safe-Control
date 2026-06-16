@@ -1,9 +1,24 @@
+<?php
+
+
+require_once("conexao.php");
+
+$sql = "SELECT * FROM funcionarios";
+$resultado = $conn->query($sql);
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central de Cadastros</title>
+<title>Gestão de Funcionários</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -13,7 +28,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -78,7 +93,7 @@ header{
 }
 
 .menu-item.ativo{
-    background:#ece8ff;
+     background:#ece8ff;
     color:#6b46ff;
     font-weight:bold;
 }
@@ -88,10 +103,10 @@ header{
     height:18px;
     border-radius:50%;
     background:#dc3545;
-    color:#fff;
+    color:white;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     font-size:11px;
 }
 
@@ -119,98 +134,108 @@ main{
 .titulo{
     font-size:34px;
     color:#333;
-    margin-bottom:10px;
+    margin-bottom:25px;
 }
 
-.subtitulo{
-    color:#777;
-    margin-bottom:35px;
+/* BUSCA */
+
+.busca{
+    position:relative;
+    margin-bottom:30px;
 }
 
-/* GRID */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+.busca i{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#999;
 }
 
-/* CARD */
+.busca input{
+    width:100%;
+    padding:14px 14px 14px 45px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+}
 
-.card{
-    background:#fff;
-    border-radius:18px;
-    padding:28px;
-    text-decoration:none;
-    color:inherit;
-    box-shadow:0 3px 10px rgba(0,0,0,.06);
+/* FUNCIONÁRIOS */
+
+.funcionario{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+    cursor:pointer;
     transition:.3s;
-    border:1px solid #ececec;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
+.funcionario:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
 }
 
-.icone{
-    width:65px;
-    height:65px;
-    border-radius:15px;
+.topo-funcionario{
     display:flex;
+    justify-content:space-between;
     align-items:center;
-    justify-content:center;
-    font-size:28px;
-    margin-bottom:18px;
+    margin-bottom:15px;
 }
 
-.card h3{
-    margin-bottom:8px;
+.topo-funcionario h3{
     color:#333;
 }
 
-.card p{
-    color:#777;
-    font-size:14px;
-    line-height:1.5;
+.alerta{
+    color:#dc3545;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
 
-/* CORES */
+.info-funcionario{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:20px;
+}
 
-.funcionario .icone{
+.info-item span{
+    display:block;
+    color:#888;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.info-item p{
+    color:#333;
+    font-weight:500;
+}
+
+/* TAGS EPIs */
+
+.epis{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.tag{
     background:#ece8ff;
     color:#6b46ff;
-}
-
-.epi .icone{
-    background:#e7f1ff;
-    color:#0d6efd;
-}
-
-.setor .icone{
-    background:#e8fff0;
-    color:#198754;
-}
-
-.estoque .icone{
-    background:#fff3db;
-    color:#fd7e14;
-}
-
-.entrega .icone{
-    background:#ffe5e5;
-    color:#dc3545;
-}
-
-.video .icone{
-    background:#f3e8ff;
-    color:#8b5cf6;
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
 }
 a{
     text-decoration:none;
-    color:inherit;
+    color:inherit;  
 }
-
 /* RESPONSIVO */
 
 @media(max-width:1000px){
@@ -229,6 +254,16 @@ a{
 
     main{
         padding:20px;
+    }
+
+    .info-funcionario{
+        grid-template-columns:1fr;
+    }
+
+    .topo-funcionario{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
     }
 
 }
@@ -252,7 +287,7 @@ a{
 
     <nav class="menu">
 
-        <a class="menu-item" href="funcionario.html">
+        <a class="menu-item ativo" href="funcionario.html">
             <i class="fa-solid fa-users"></i>
             Funcionários
         </a>
@@ -266,14 +301,14 @@ a{
             <i class="fa-solid fa-triangle-exclamation"></i>
             Alertas
             <span class="badge">5</span>
-        </a >
+        </a>
 
         <a class="menu-item" href="manutencao.html">
             <i class="fa-solid fa-wrench"></i>
             Manutenção
         </a>
 
-        <a class="menu-item ativo" href="cadastros.html">
+        <a class="menu-item" href="cadastros.html">
             <i class="fa-solid fa-plus"></i>
             Cadastros
         </a>
@@ -289,67 +324,44 @@ a{
 
 <main>
 
-<div class="container">
+   <?php while($funcionario = $resultado->fetch_assoc()) { ?>
 
-    <h1 class="titulo">Central de Cadastros</h1>
+<div class="funcionario">
 
-    <p class="subtitulo">
-        Escolha o tipo de cadastro que deseja realizar.
-    </p>
+    <div class="topo-funcionario">
 
-    <div class="grid">
+        <h3><?= $funcionario['nome']; ?></h3>
 
-        <a href="cadastrofunc.html" class="card funcionario" >
-            <div class="icone">
-                <i class="fa-solid fa-user-plus"></i>
-            </div>
-            <h3>Cadastrar Funcionário</h3>
-            <p>Adicionar novos colaboradores ao sistema.</p>
-        </a>
+        <div class="alerta">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            0
+        </div>
 
-        <a href="cadastro-epi.html" class="card epi">
-            <div class="icone">
-                <i class="fa-solid fa-helmet-safety"></i>
-            </div>
-            <h3>Cadastrar EPI</h3>
-            <p>Adicionar novos equipamentos de proteção.</p>
-        </a>
+    </div>
 
-        <a href="cadastro-setor.html" class="card setor">
-            <div class="icone">
-                <i class="fa-solid fa-building"></i>
-            </div>
-            <h3>Cadastrar Setor</h3>
-            <p>Criar setores e departamentos da empresa.</p>
-        </a>
+    <div class="info-funcionario">
 
-        <a href="cadastro-estoque.html" class="card estoque">
-            <div class="icone">
-                <i class="fa-solid fa-box-open"></i>
-            </div>
-            <h3>Entrada de Estoque</h3>
-            <p>Registrar reposição e entrada de EPIs.</p>
-        </a>
+        <div class="info-item">
+            <span>Matrícula</span>
+            <p><?= $funcionario['matricula']; ?></p>
+        </div>
 
-        <a href="cadastro-entregaepi.html" class="card entrega">
-            <div class="icone">
-                <i class="fa-solid fa-clipboard-check"></i>
-            </div>
-            <h3>Entrega de EPI</h3>
-            <p>Vincular equipamentos aos funcionários.</p>
-        </a>
+        <div class="info-item">
+            <span>Setor</span>
+            <p><?= $funcionario['setor_id']; ?></p>
+        </div>
 
-        <a href="cadastro-videos.html" class="card video">
-            <div class="icone">
-                <i class="fa-solid fa-video"></i>
-            </div>
-            <h3>Cadastrar Vídeo</h3>
-            <p>Adicionar vídeos de treinamento e orientação.</p>
-        </a>
+    </div>
+
+    <div class="epis">
+
+        <div class="tag">Sem EPIs cadastrados</div>
 
     </div>
 
 </div>
+
+<?php } ?>
 
 </main>
 

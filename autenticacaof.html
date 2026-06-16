@@ -10,7 +10,7 @@
     <div class="geral">
        
         <img src="logo.jpeg" class="logotipo">
-        <h2>Acesso do Funcionário</h2>
+        <h2>Acesso de Funcionários</h2>
 
         <div class="login">
         <label for="cpf">CPF</label>
@@ -20,22 +20,10 @@
         <input type="password" id="txtsenha" placeholder="Digite sua senha" name="senha">
         </div>
         <button type="button" onclick="Entrar()">Entrar</button>
+        <p>Não tem acesso ainda? <a href="">Cadastre-se</a></p>
 
 
     </div>
-
-     <script>
-        function Entrar(){
-            const cpf = document.getElementById('txtcpf').value.trim();
-            const senha = document.getElementById('txtsenha').value.trim();
-            if(!cpf || !senha){
-                alert('Por favor, preencha CPF e senha.');
-                return;
-            }
-            // Redireciona para a página do funcionário
-            window.location.href = 'ficha.html';
-        }
-    </script>
     
 </body>
 </html>
