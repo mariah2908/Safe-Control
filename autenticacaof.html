@@ -23,6 +23,19 @@
 
 
     </div>
+
+     <script>
+        function Entrar(){
+            const cpf = document.getElementById('txtcpf').value.trim();
+            const senha = document.getElementById('txtsenha').value.trim();
+            if(!cpf || !senha){
+                alert('Por favor, preencha CPF e senha.');
+                return;
+            }
+            // Redireciona para a página do funcionário
+            window.location.href = 'ficha.html';
+        }
+    </script>
     
 </body>
 </html>
