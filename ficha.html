@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel do Funcionário</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    height:85px;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.usuario img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+}
+
+.info small{
+    display:block;
+    color:#777;
+    font-size:12px;
+}
+
+.info h3{
+    color:#333;
+    font-size:20px;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#666;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    background:#f2f2f2;
+}
+
+.menu-item.ativo{
+    background:#6b46ff;
+    color:white;
+    font-weight:bold;
+}
+
+.badge{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:red;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+}
+
+.btn-sair{
+    border:none;
+    background:#fff1f1;
+    color:#d9534f;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* CONTEÚDO */
+
+main{
+    padding:40px;
+}
+
+.card{
+    margin: 0 auto;
+    width:100%;
+    max-width:1300px;
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:18px;
+    padding:40px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+}
+
+.card h1{
+    color:#333;
+    font-size:36px;
+    margin-bottom:40px;
+}
+
+.linha{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    margin-bottom:35px;
+}
+
+.campo label{
+    display:block;
+    color:#777;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.campo p{
+    font-size:18px;
+    color:#333;
+}
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+    header{
+        height:auto;
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    main{
+        padding:20px;
+    }
+
+    .linha{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .card{
+        padding:25px;
+    }
+
+    .card h1{
+        font-size:28px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="usuario">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Usuário">
+
+        <div class="info">
+            <small>Painel do Funcionário</small>
+            <h3>João da Silva</h3>
+        </div>
+
+    </div>
+    
+
+    <nav class="menu">
+
+        <a class="menu-item ativo" href="funcionario.html">
+            <i class="fa-regular fa-user"></i>
+            Ficha
+        </a>
+
+        <a class="menu-item" href="epis.html">
+            <i class="fa-solid fa-helmet-safety"></i>
+            EPIs
+        </a>
+
+        <a class="menu-item" href="notificacao.html">
+            <i class="fa-regular fa-bell"></i>
+            Notificações
+            <span class="badge">1</span>
+        </a>
+
+         <a class="menu-item" href="videos.html">
+            <i class="fa-solid fa-video"></i>
+            Vídeos
+        </a>
+
+    </nav>
+
+    <button class="btn-sair">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Sair
+    </button>
+
+</header>
+
+
+    </nav>
+
+<main>
+
+    <section class="card">
+
+        <h1>Ficha de Cadastro</h1>
+
+        <div class="linha">
+
+            <div class="campo">
+                <label>Nome Completo</label>
+                <p>João da Silva</p>
+            </div>
+
+            <div class="campo">
+                <label>Matrícula</label>
+                <p>20240001</p>
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+                <label>CPF</label>
+                <p>222.222.222-22</p>
+            </div>
+
+            <div class="campo">
+                <label>Setor</label>
+                <p>Produção</p>
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+                <label>Cargo</label>
+                <p>Operador de Máquinas</p>
+            </div>
+
+            <div class="campo">
+                <label>Data de Admissão</label>
+                <p>15/01/2024</p>
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+                <label>E-mail</label>
+                <p>joao.silva@empresa.com.br</p>
+            </div>
+
+            <div class="campo">
+                <label>Telefone</label>
+                <p>(11) 98765-4321</p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="logout.js"></script>
+</body>
+</html>
