@@ -1,0 +1,369 @@
+<?php
+
+
+require_once("conexao.php");
+
+$sql = "SELECT * FROM funcionarios";
+$resultado = $conn->query($sql);
+
+?>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão de Funcionários</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    height:85px;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.usuario img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+}
+
+.info small{
+    display:block;
+    color:#777;
+    font-size:12px;
+}
+
+.info h3{
+    color:#333;
+    font-size:20px;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#666;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    background:#f2f2f2;
+}
+
+.menu-item.ativo{
+     background:#ece8ff;
+    color:#6b46ff;
+    font-weight:bold;
+}
+
+.badge{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#dc3545;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+}
+
+.btn-sair{
+    border:none;
+    background:#fff1f1;
+    color:#d9534f;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* MAIN */
+
+main{
+    padding:40px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.titulo{
+    font-size:34px;
+    color:#333;
+    margin-bottom:25px;
+}
+
+/* BUSCA */
+
+.busca{
+    position:relative;
+    margin-bottom:30px;
+}
+
+.busca i{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#999;
+}
+
+.busca input{
+    width:100%;
+    padding:14px 14px 14px 45px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:15px;
+}
+
+/* FUNCIONÁRIOS */
+
+.funcionario{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.funcionario:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,.08);
+}
+
+.topo-funcionario{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.topo-funcionario h3{
+    color:#333;
+}
+
+.alerta{
+    color:#dc3545;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.info-funcionario{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.info-item span{
+    display:block;
+    color:#888;
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.info-item p{
+    color:#333;
+    font-weight:500;
+}
+
+/* TAGS EPIs */
+
+.epis{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.tag{
+    background:#ece8ff;
+    color:#6b46ff;
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+a{
+    text-decoration:none;
+    color:inherit;  
+}
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+    header{
+        height:auto;
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    main{
+        padding:20px;
+    }
+
+    .info-funcionario{
+        grid-template-columns:1fr;
+    }
+
+    .topo-funcionario{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="usuario">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin">
+
+        <div class="info">
+            <small>Painel Admin</small>
+            <h3>Administrador</h3>
+        </div>
+
+    </div>
+
+    <nav class="menu">
+
+        <a class="menu-item ativo" href="funcionario.html">
+            <i class="fa-solid fa-users"></i>
+            Funcionários
+        </a>
+
+        <a class="menu-item" href="estoque.html">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            Estoque
+        </a>
+
+        <a class="menu-item" href="alertas.html">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Alertas
+            <span class="badge">5</span>
+        </a>
+
+        <a class="menu-item" href="manutencao.html">
+            <i class="fa-solid fa-wrench"></i>
+            Manutenção
+        </a>
+
+        <a class="menu-item" href="cadastros.html">
+            <i class="fa-solid fa-plus"></i>
+            Cadastros
+        </a>
+
+    </nav>
+
+    <button class="btn-sair">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Sair
+    </button>
+
+</header>
+
+<main>
+
+   <?php while($funcionario = $resultado->fetch_assoc()) { ?>
+
+<div class="funcionario">
+
+    <div class="topo-funcionario">
+
+        <h3><?= $funcionario['nome']; ?></h3>
+
+        <div class="alerta">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            0
+        </div>
+
+    </div>
+
+    <div class="info-funcionario">
+
+        <div class="info-item">
+            <span>Matrícula</span>
+            <p><?= $funcionario['matricula']; ?></p>
+        </div>
+
+        <div class="info-item">
+            <span>Setor</span>
+            <p><?= $funcionario['setor_id']; ?></p>
+        </div>
+
+    </div>
+
+    <div class="epis">
+
+        <div class="tag">Sem EPIs cadastrados</div>
+
+    </div>
+
+</div>
+
+<?php } ?>
+
+</main>
+
+</body>
+</html>
