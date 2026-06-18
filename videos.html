@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vídeos de Treinamento</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+    height:85px;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.usuario img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+}
+
+.info small{
+    display:block;
+    color:#777;
+    font-size:12px;
+}
+
+.info h3{
+    color:#333;
+    font-size:20px;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#666;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    background:#f2f2f2;
+}
+
+.menu-item.ativo{
+    background:#ece8ff;
+    color:#6b46ff;
+    font-weight:bold;
+}
+
+.badge{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:red;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:11px;
+}
+
+.btn-sair{
+    border:none;
+    background:#fff1f1;
+    color:#d9534f;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* MAIN */
+
+main{
+    padding:40px;
+}
+
+.card{
+    max-width:1200px;
+    margin:auto;
+}
+
+.card h1{
+    font-size:34px;
+    color:#333;
+    margin-bottom:30px;
+}
+
+/* GRID DE VÍDEOS */
+
+.videos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+    gap:25px;
+}
+
+.video-card{
+    background:white;
+    border:1px solid #e5e5e5;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.video-card:hover{
+    transform:translateY(-3px);
+}
+
+.video-thumb{
+    height:220px;
+    background:#111;
+    position:relative;
+    cursor:pointer;
+}
+
+.play-btn{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:white;
+    color:#6b46ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.duracao{
+    position:absolute;
+    bottom:12px;
+    right:12px;
+    background:rgba(0,0,0,.75);
+    color:white;
+    padding:4px 8px;
+    border-radius:5px;
+    font-size:13px;
+}
+
+.video-info{
+    padding:20px;
+}
+
+.video-info h3{
+    color:#333;
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.video-info p{
+    color:#777;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.btn-video{
+    width:100%;
+    border:none;
+    background:#6b46ff;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+    header{
+        height:auto;
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    main{
+        padding:20px;
+    }
+
+    .videos-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="usuario">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Usuário">
+
+        <div class="info">
+            <small>Painel do Funcionário</small>
+            <h3>João da Silva</h3>
+        </div>
+
+    </div>
+
+    <nav class="menu">
+
+        <a class="menu-item" href="ficha.html">
+            <i class="fa-regular fa-user"></i>
+            Ficha
+        </a>
+
+        <a class="menu-item" href="epis.html">
+            <i class="fa-solid fa-helmet-safety"></i>
+            EPIs
+        </a>
+
+        <a class="menu-item" href="notificacao.html">
+            <i class="fa-regular fa-bell"></i>
+            Notificações
+            <span class="badge">1</span>
+        </a>
+
+        <a class="menu-item ativo" href="videos.html">
+            <i class="fa-solid fa-video"></i>
+            Vídeos
+        </a>
+
+    </nav>
+
+    <button class="btn-sair">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Sair
+    </button>
+
+</header>
+
+<main>
+
+    <section class="card">
+
+        <h1>Vídeos de Treinamento</h1>
+
+        <div class="videos-grid">
+
+            <!-- Vídeo 1 -->
+            <div class="video-card">
+
+                <div class="video-thumb">
+
+                    <div class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+
+                    <div class="duracao">
+                        03:45
+                    </div>
+
+                </div>
+
+                <div class="video-info">
+
+                    <h3>Como Usar Corretamente o Capacete de Segurança</h3>
+
+                    <p>
+                        Aprenda a forma correta de utilização,
+                        ajuste e conservação do capacete de segurança.
+                    </p>
+
+                    <button class="btn-video">
+                        Assistir Vídeo
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Vídeo 2 -->
+            <div class="video-card">
+
+                <div class="video-thumb">
+
+                    <div class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+
+                    <div class="duracao">
+                        04:20
+                    </div>
+
+                </div>
+
+                <div class="video-info">
+
+                    <h3>Uso Adequado de Luvas de Proteção</h3>
+
+                    <p>
+                        Conheça os cuidados necessários para utilização
+                        correta das luvas de proteção.
+                    </p>
+
+                    <button class="btn-video">
+                        Assistir Vídeo
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Vídeo 3 -->
+            <div class="video-card">
+
+                <div class="video-thumb">
+
+                    <div class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+
+                    <div class="duracao">
+                        05:10
+                    </div>
+
+                </div>
+
+                <div class="video-info">
+
+                    <h3>Conservação dos Óculos de Segurança</h3>
+
+                    <p>
+                        Aprenda a limpar, armazenar e conservar os
+                        óculos de segurança corretamente.
+                    </p>
+
+                    <button class="btn-video">
+                        Assistir Vídeo
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Vídeo 4 -->
+            <div class="video-card">
+
+                <div class="video-thumb">
+
+                    <div class="play-btn">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+
+                    <div class="duracao">
+                        06:30
+                    </div>
+
+                </div>
+
+                <div class="video-info">
+
+                    <h3>Procedimentos de Segurança na Produção</h3>
+
+                    <p>
+                        Orientações gerais para atuação segura
+                        no ambiente de produção.
+                    </p>
+
+                    <button class="btn-video">
+                        Assistir Vídeo
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="logout.js"></script>
+</body>
+</html>
