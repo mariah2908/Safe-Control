@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastrar Vídeo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+main{
+    padding:40px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.titulo{
+    font-size:34px;
+    color:#333;
+    margin-bottom:30px;
+}
+
+.form-card{
+    background:#fff;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.secao{
+    margin-bottom:30px;
+}
+
+.secao h2{
+    margin-bottom:20px;
+    color:#333;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+}
+
+.campo label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#555;
+}
+
+.campo input,
+.campo select,
+.campo textarea{
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+.campo textarea{
+    height:120px;
+    resize:none;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus{
+    border-color:#6b46ff;
+}
+
+.acoes{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-top:30px;
+}
+
+.btn-cancelar{
+    background:#ececec;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.btn-salvar{
+    background:#6b46ff;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.preview{
+    background:#f8f9fa;
+    border:2px dashed #ddd;
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    color:#777;
+    margin-top:15px;
+}
+
+.preview i{
+    font-size:40px;
+    color:#6b46ff;
+    margin-bottom:10px;
+}
+header{
+    height:85px;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.usuario img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+}
+.menu-item{
+    background:#ece8ff;
+    color:#6b46ff;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.btn-sair{
+    background:#fff1f1;
+    color:#d9534f;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+@media(max-width:900px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+<header>
+
+<div class="usuario">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+<div class="info">
+<small>Painel Admin</small>
+<h3>Administrador</h3>
+</div>
+
+</div>
+
+<div class="menu-item">
+<i class="fa-solid fa-video"></i>
+Cadastrar Vídeo
+</div>
+
+<button class="btn-sair">
+<i class="fa-solid fa-right-from-bracket"></i>
+Sair
+</button>
+
+</header>
+<main>
+
+<div class="container">
+
+<h1 class="titulo">
+    
+    Cadastrar Vídeo
+</h1>
+
+<form class="form-card">
+
+<div class="secao">
+
+<h2>Dados do Vídeo</h2>
+
+<div class="grid">
+
+<div class="campo">
+<label>Título</label>
+<input type="text" placeholder="Ex: Uso Correto do Capacete">
+</div>
+
+<div class="campo">
+<label>Categoria</label>
+<select>
+<option>Segurança</option>
+<option>EPI</option>
+<option>Treinamento</option>
+<option>Manutenção</option>
+</select>
+</div>
+
+<div class="campo">
+<label>Link do Vídeo</label>
+<input type="url" placeholder="https://youtube.com/...">
+</div>
+
+<div class="campo">
+<label>Miniatura (URL)</label>
+<input type="url" placeholder="https://imagem.com/thumb.jpg">
+</div>
+
+</div>
+
+</div>
+
+<div class="secao">
+
+<h2>Informações Complementares</h2>
+
+<div class="grid">
+
+<div class="campo">
+<label>Público-Alvo</label>
+<select>
+<option>Todos</option>
+<option>Produção</option>
+<option>Manutenção</option>
+<option>Logística</option>
+<option>Administrativo</option>
+</select>
+</div>
+
+<div class="campo">
+<label>Status</label>
+<select>
+<option>Ativo</option>
+<option>Inativo</option>
+</select>
+</div>
+
+</div>
+
+<div class="campo" style="margin-top:20px;">
+<label>Descrição</label>
+<textarea placeholder="Descreva o conteúdo do vídeo..."></textarea>
+</div>
+
+</div>
+
+<div class="preview">
+
+<i class="fa-solid fa-circle-play"></i>
+
+<h3>Pré-visualização do Vídeo</h3>
+
+<p>
+A miniatura e o vídeo aparecerão aqui após o cadastro.
+</p>
+
+</div>
+
+<div class="acoes">
+
+<button type="button" class="btn-cancelar">
+Cancelar
+</button>
+
+<button type="submit" class="btn-salvar">
+Cadastrar Vídeo
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</main>
+
+<script src="logout.js"></script>
+</body>
+</html>
