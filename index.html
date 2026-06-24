@@ -10,24 +10,26 @@
 <body>
     <div class="geral">
         <div class="logodiv">
-        <img src="logo.jpeg" class="logotipo">
+            <img src="logo.jpeg" class="logotipo" alt="SafeControl">
         </div>
-        <p>Sistema de Gerenciamento de Segurança e <br> Manutenção</p><br><br>
+
+        <p class="descricao">Sistema de Gerenciamento de Segurança e <br> Manutenção</p>
+
         <h2>Selecione seu Perfil de Acesso</h2>
-        <a href="autenticacaof.html">
-        <button class="func" type="button">Funcionário </button>
-        </a>
-        
-        <br>
-        <a href="autenticacaoadm.html">
-        <button class="adm" type="button">Administrador</button>
-        </a>
-       
-        
-        
 
+        <div class="card-grid">
+            <a href="autenticacaof.html" class="card-link">
+                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>Funcionário</h3>
+                <p class="card-sub">Acesse suas informações e EPIs</p>
+            </a>
 
-
+            <a href="autenticacaoadm.html" class="card-link">
+                <div class="card-icon admin"><i class="fa-solid fa-user-gear"></i></div>
+                <h3>Administrador</h3>
+                <p class="card-sub">Gerencie funcionários e estoque</p>
+            </a>
+        </div>
 
     </div>
     
