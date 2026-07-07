@@ -146,21 +146,26 @@ main{
     cursor:pointer;
 }
 
-.btn-salvar{
-    background:#6b46ff;
-    color:white;
-    border:none;
-    padding:14px 25px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
+.acoes button:nth-child(1){
+    background:#cfe1ff;
+    color:#3f4a5c;
 }
 
-@media(max-width:900px){
+.acoes button:nth-child(2){
+    background:#fde7b3;
+    color:#6b4f1b;
+}
 
-    .grid{
-        grid-template-columns:1fr;
-    }
+.acoes button:nth-child(3){
+    background:#d8f5e6;
+    color:#2f5a45;
+}
+
+.acoes button:nth-child(4){
+    background:#f8d7da;
+    color:#7a2d35;
+}
+
 
     header{
         flex-direction:column;
@@ -188,11 +193,9 @@ main{
 
 </div>
 
-<div class="menu">
 <div class="menu-item">
 <i class="fa-solid fa-user-plus"></i>
 Cadastrar Funcionário
-</div>
 </div>
 
 <button class="btn-sair">
@@ -296,7 +299,19 @@ Sair
 <div class="acoes">
 
 <button type="button" class="btn-cancelar">
-Cancelar
+Limpar
+</button>
+
+<button type="button" class="btn-cancelar">
+Alterar
+</button>
+
+<button type="button" class="btn-cancelar">
+Consultar
+</button>
+
+<button type="button" class="btn-cancelar">
+Excluir
 </button>
 
 <button type="submit" class="btn-salvar">
