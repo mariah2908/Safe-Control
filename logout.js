@@ -26,4 +26,58 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = 'index.html';
         }
     }));
+
+    function isFormComplete(form) {
+        const fields = form.querySelectorAll('input, select, textarea');
+        for (const field of fields) {
+            if (field.disabled) continue;
+            const tag = field.tagName.toLowerCase();
+            const type = field.type;
+            if (tag === 'input') {
+                if (['submit', 'button', 'reset', 'hidden', 'file', 'image'].includes(type)) continue;
+                if (['checkbox', 'radio'].includes(type)) continue;
+            }
+            const value = field.value.trim();
+            if (!value) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function addClearButtonBehavior(form) {
+        const clearButton = Array.from(form.querySelectorAll('button[type="button"].btn-cancelar'))
+            .find(btn => btn.textContent.trim().toLowerCase() === 'limpar');
+        if (!clearButton) return;
+
+        clearButton.addEventListener('click', function() {
+            const fields = form.querySelectorAll('input, select, textarea');
+            fields.forEach(field => {
+                if (field.disabled) return;
+                const tag = field.tagName.toLowerCase();
+                const type = field.type;
+                if (tag === 'input') {
+                    if (['submit', 'button', 'reset', 'hidden', 'file', 'image'].includes(type)) return;
+                    if (['checkbox', 'radio'].includes(type)) {
+                        field.checked = false;
+                        return;
+                    }
+                }
+                field.value = '';
+            });
+        });
+    }
+
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        addClearButtonBehavior(form);
+        form.addEventListener('submit', function(event) {
+            if (!isFormComplete(form)) {
+                event.preventDefault();
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            alert('Cadastrado com sucesso');
+        });
+    });
 });
